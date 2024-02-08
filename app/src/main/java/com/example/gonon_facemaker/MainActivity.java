@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar green_seekBar;
     private SeekBar blue_seekBar;
 
-
+    // Step one is to implement onSeekBarChangeListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // It is better to create a private MainActivity myActivity instead
         red_textView = (TextView) findViewById(R.id.RED_textView);
         green_textView = (TextView) findViewById(R.id.GREEN_textView);
         blue_textView = (TextView) findViewById(R.id.BLUE_textView);
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                // Do nothing
             }
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                // Do nothing
             }
         });
 

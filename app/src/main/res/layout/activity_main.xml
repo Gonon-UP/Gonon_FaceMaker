@@ -32,6 +32,7 @@
                     android:id="@+id/RED_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#FFFF1111"
                     android:text="RED = 0"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -41,6 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="30sp"
+                    android:textColor="#FF11FF11"
                     android:textStyle="bold"
                     android:text="GREEN = 0" />
 
@@ -48,6 +50,7 @@
                     android:id="@+id/BLUE_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#FF1111FF"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:text="BLUE = 0" />
@@ -69,6 +72,8 @@
                     android:id="@+id/RED_seekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:thumbTint="#FFFF1111"
+                    android:progressTint="#FFFF1111"
                     android:layout_weight="1"
                     android:max="255"
                     android:progressBackgroundTint="@color/black"/>
@@ -77,7 +82,9 @@
                     android:id="@+id/GREEN_seekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progressBackgroundTint="@color/black"
+                    android:thumbTint="#FF11FF11"
+                    android:progressTint="#FF11FF11"
+                    android:progressBackgroundTint="#FF000000"
                     android:max="255"
                     android:layout_weight="5" />
 
@@ -85,6 +92,8 @@
                     android:id="@+id/BLUE_seekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:thumbTint="#FF1111FF"
+                    android:progressTint="#FF1111FF"
                     android:progressBackgroundTint="@color/black"
                     android:max="255"
                     android:layout_weight="1" />
