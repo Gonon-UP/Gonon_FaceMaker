@@ -139,9 +139,9 @@
         <LinearLayout
             android:id="@+id/llRadioButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingHorizontal="20sp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20sp">
 
             <RadioGroup
                 android:id="@+id/face_radioGroup"
@@ -179,12 +179,27 @@
                 android:id="@+id/random_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_weight="1"
-                android:text="Random Face" />
+                android:text="Random Face"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_SurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <SurfaceView
+                android:id="@+id/Face_surfaceView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

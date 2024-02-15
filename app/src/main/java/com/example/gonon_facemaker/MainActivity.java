@@ -1,3 +1,8 @@
+/* @author Eduardo Gonon
+ * CS301 Facemaker HW
+ */
+
+
 package com.example.gonon_facemaker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,12 +101,14 @@ public class MainActivity extends AppCompatActivity {
             hairlist.add("Curly Hair");
             hairlist.add("Straight hair");
             hairlist.add("Bald");
+            hairlist.add("Pompadour Hair");
 
         ArrayAdapter<String> hairlistAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 hairlist
         );
+        hairlistAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinnerList.setAdapter(hairlistAdapter);
     }
 }

@@ -1,5 +1,10 @@
+/* @author Eduardo Gonon
+ * CS301 Facemaker HW
+ */
+
 package com.example.gonon_facemaker;
 import java.util.Random;
+import android.graphics.Canvas;
 
 /*
  *
@@ -9,31 +14,67 @@ import java.util.Random;
  */
 public class Face {
 
-    // Initializing properties private all
-    int skinColor;
-    int eyeColor;
-    int hairColor;
-    int hairStyle; // Identifies which hair style the face has
+    // Initializing properties
+    private int skinColor;
+    private int eyeColor;
+    private int hairColor;
+    private int hairStyle; // Identifies which hair style the face has
 
-
-    // Constructor for face
-    public Face(int _skinColor, int _eyeColor, int _hairColor, int _hairStyle) {
-        this.skinColor = _skinColor ;
-        this.eyeColor = _eyeColor;
-        this.hairColor = _hairColor;
-        this.hairStyle = _hairStyle;
+    public Face()   {
+        randomize();
     }
 
-    public static void main(String[] args) {
-        // Main method
-    }
-// helper method
-//    static void randomize(int _skinColor, int _eyeColor, int _hairColor, int _hairStyle)    {
-//        this.skinColor = _skinColor;
-//        this.eyeColor = _eyeColor;
-//        this.hairColor = _hairColor;
-//        this.hairStyle = _hairStyle;
-//
-//    }
 
+    // randomize method will randomize all four int properties for face
+    public void randomize() {
+        Random random = new Random();
+
+        // Randomizing int values for property values
+        this.skinColor = random.nextInt(256);
+        this.eyeColor = random.nextInt(256);
+        this.hairColor = random.nextInt(256);
+        this.hairStyle = random.nextInt(4); // Total of 4 hairstyle options
+    }
+
+
+    public void onDraw(Canvas canvas)   {
+        // To be implemented soon
+    }
+
+
+    // Getter methods for instance variables
+    public int getSkinColor() {
+        return this.skinColor;
+    }
+
+    public int getEyeColor()    {
+        return this.eyeColor;
+    }
+
+    public int getHairColor()   {
+        return this.hairColor;
+    }
+
+    public int getHairStyle() {
+        return hairStyle;
+    }
+
+
+
+    // Setter methods for instance variables
+    public void setSkinColor(int skinColor) {
+        this.skinColor = skinColor;
+    }
+
+    public void setEyeColor(int eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public void setHairStyle(int hairStyle) {
+        this.hairStyle = hairStyle;
+    }
+
+    public void setHairColor(int hairColor) {
+        this.hairColor = hairColor;
+    }
 }
