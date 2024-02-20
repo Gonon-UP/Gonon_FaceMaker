@@ -5,6 +5,7 @@
 package com.example.gonon_facemaker;
 import java.util.Random;
 import android.graphics.Canvas;
+import android.graphics.Color;
 
 /*
  *
@@ -30,7 +31,7 @@ public class Face {
         Random random = new Random();
 
         // Randomizing int values for property values
-        this.skinColor = random.nextInt(256);
+        this.skinColor = Color.argb(255, 55, 55, 55);
         this.eyeColor = random.nextInt(256);
         this.hairColor = random.nextInt(256);
         this.hairStyle = random.nextInt(4); // Total of 4 hairstyle options
@@ -39,6 +40,9 @@ public class Face {
 
     public void onDraw(Canvas canvas)   {
         // To be implemented soon
+//        drawFace(canvas, yellow);
+//        drawEyes(canvas, black);
+//        drawHair(canvas, black, 1);
     }
 
 

@@ -97,18 +97,18 @@ public class MainActivity extends AppCompatActivity {
 
         spinnerList = findViewById(R.id.hair_Spinner);
 
-        ArrayList<String> hairlist = new ArrayList<>();
-            hairlist.add("Curly Hair");
-            hairlist.add("Straight hair");
-            hairlist.add("Bald");
-            hairlist.add("Pompadour Hair");
+        ArrayList<String> hairList = new ArrayList<>();
+            hairList.add("Curly Hair");
+            hairList.add("Straight hair");
+            hairList.add("Bald");
+            hairList.add("Pompadour Hair");
 
-        ArrayAdapter<String> hairlistAdapter = new ArrayAdapter<>(
+        ArrayAdapter<String> hairListAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                hairlist
+                hairList
         );
-        hairlistAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
-        spinnerList.setAdapter(hairlistAdapter);
+        hairListAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+        spinnerList.setAdapter(hairListAdapter);
     }
 }
