@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,23 +27,34 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar green_seekBar;
     private SeekBar blue_seekBar;
 
+
+
+
     // Step one is to implement onSeekBarChangeListener
+    // onCreate will be executed the first time the app is run
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // It is better to create a private MainActivity myActivity instead
+        Face FaceView = findViewById(R.id.Face_surfaceView);
+
+        //FaceController faceController = new FaceController(FaceView, this);
+
+
+
+
+        // References for seekbars & textviews
         red_textView = (TextView) findViewById(R.id.RED_textView);
         green_textView = (TextView) findViewById(R.id.GREEN_textView);
         blue_textView = (TextView) findViewById(R.id.BLUE_textView);
-
 
         red_seekBar = (SeekBar) findViewById(R.id.RED_seekBar);
         green_seekBar = (SeekBar) findViewById(R.id.GREEN_seekBar);
         blue_seekBar = (SeekBar) findViewById(R.id.BLUE_seekBar);
 
 
+        // All these will be for setting seekbar changes
         red_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -95,13 +107,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         spinnerList = findViewById(R.id.hair_Spinner);
 
         ArrayList<String> hairList = new ArrayList<>();
-            hairList.add("Curly Hair");
-            hairList.add("Straight hair");
             hairList.add("Bald");
-            hairList.add("Pompadour Hair");
+            hairList.add("Straight hair");
+            hairList.add("Buzz cut");
 
         ArrayAdapter<String> hairListAdapter = new ArrayAdapter<>(
                 this,

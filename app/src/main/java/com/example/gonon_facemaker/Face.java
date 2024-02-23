@@ -20,6 +20,10 @@ import android.view.SurfaceView;
  */
 public class Face extends SurfaceView {
 
+    public Paint hairPaint = new Paint();
+    public Paint eyePaint = new Paint();
+    public Paint skinPaint = new Paint();
+    private final Paint black = new Paint();
     // Initializing properties
     private int skinColor;
     private int eyeColor;
@@ -27,30 +31,16 @@ public class Face extends SurfaceView {
     private int hairStyle; // Identifies which hair style the face has
 
 
-
-    // randomize method will randomize all four int properties for face
-    public void randomize() {
-        Random random = new Random();
-
-        // Randomizing int values for property values
-        this.skinColor = Color.argb(255, random.nextInt(255),
-                random.nextInt(255), random.nextInt(255));
-
-        this.eyeColor = Color.argb(255, random.nextInt(255),
-                random.nextInt(255), random.nextInt(255));
-
-        this.hairColor = Color.argb(255, random.nextInt(255),
-                random.nextInt(255), random.nextInt(255));
-
-        this.hairStyle = random.nextInt(4); // Total of 4 hairstyle options
-    }
-
-
-    //It's a good habit to create Paint objects just once rather than
-    //recreate them each time onDraw() is called
-    private final Paint black = new Paint();
-    private final Paint yellow = new Paint();
     private float width;
+    private float height;
+
+    private static final int BALD = 0;
+    private static final int STRAIGHT = 1;
+    private static final int BUZZCUT = 2;
+
+
+
+
 
     // Preliminary stages for SurfaceView
     public Face(Context context) {
@@ -69,67 +59,90 @@ public class Face extends SurfaceView {
     public Face(Context context, AttributeSet attrs)    {
 
         super(context, attrs);
-
-        //hex colors
-        black.setColor(0xFF000000);
-        yellow.setColor(0xFFFFFF00);
-        Paint white = new Paint();
-        white.setColor(0xFFFFFFFF);
+        randomize();
 
         this.setWillNotDraw(false);
     }
 
-    public void drawFace(Canvas canvas, Paint Color) // Location on canvas
+    // randomize method will randomize all four int properties for face
+    public void randomize() {
+        Random random = new Random();
+
+        // Randomizing int values for property values
+        this.skinColor = Color.argb(255, random.nextInt(255),
+                random.nextInt(255), random.nextInt(255));
+
+        this.eyeColor = Color.argb(255, random.nextInt(255),
+                random.nextInt(255), random.nextInt(255));
+
+        this.hairColor = Color.argb(255, random.nextInt(255),
+                random.nextInt(255), random.nextInt(255));
+
+        this.hairStyle = random.nextInt(3); // Total of 4 hairstyle options
+    }
+
+
+    public void drawFace(Canvas canvas)
     {
         // For face
-        canvas.drawCircle((width / 2), 350, 300,
-                Color);
+        canvas.drawCircle(width, height, 300,
+                skinPaint);
 
         // Mouth
-        canvas.drawOval((width / 2) - 180, 340,(width / 2) + 180,
-                540, black);
+        canvas.drawOval(width - 180, height - 10,width + 180,
+                height + 190, black);
 
         // Smile
-        canvas.drawRect((width / 2) - 180, 410,
-                (width / 2) + 180, 440, black);
-        canvas.drawOval((width / 2) - 180, 339,
-                (width / 2) + 180, 480, Color);
+        canvas.drawRect(width - 180, height + 60,
+                width + 180, height + 90, black);
+        canvas.drawOval(width - 180, height - 11,
+                width + 180, height + 130, skinPaint);
     }
 
-    public void drawEyes(Canvas canvas, Paint Color)    {
+
+    public void drawEyes(Canvas canvas)    {
         // For eyes
-        canvas.drawCircle((width / 2) - 130, 250, 45,  Color); // Left eye
-        canvas.drawCircle((width / 2) + 130, 250, 45, Color); // Right eye
+        canvas.drawCircle(width - 130, height - 100,
+                45,  eyePaint); // Left eye
+        canvas.drawCircle(width + 130, height - 100,
+                45, eyePaint); // Right eye
     }
 
-    public void drawHair(Canvas canvas, Paint Color, int option)   {
+    public void drawHair(Canvas canvas)   {
         int i;
-        if (option == 0)    {
-            // Draw nothing, bald
-            //canvas.drawLine((width / 2) - 200, 150, );
-            canvas.drawPoint((width / 2) - 250, 150, black);
-            canvas.drawPoint((width / 2) + 250, 150, black);
-            canvas.drawPoint((width / 2), 50, black);
+        // Draw nothing, bald
+        if (hairStyle == BALD)    {
+           //
         }
-        else if (option == 1) {
+        // Straight hair
+        else if (hairStyle == STRAIGHT) {
             for (i = 0; i < 400; i += 20) {
-                canvas.drawLine((width / 2) - 200 + i, 50,
-                        (width / 2) - 200 + i, 150, Color);
+                canvas.drawLine(width - 200 + i, height - 300,
+                        width - 200 + i, height - 200, hairPaint);
             }
         }
-        else if (option == 2)   {
-            // Draw Curly Hair
-        }
-        else if (option == 3)   {
-            // draw
+        //
+        else if (hairStyle == BUZZCUT)   {
+            //draw simple mouth
+            canvas.drawArc(width - 220, height - 300,
+                    width + 220, height - 100,
+                    180, 180, false, hairPaint);
         }
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
-        drawFace(canvas, yellow);
-        drawEyes(canvas, black);
-        drawHair(canvas, black, 0);
+        black.setColor(0xFF000000);
+
+        height = getHeight() / 2;
+        hairPaint.setColor(hairColor);
+        eyePaint.setColor(eyeColor);
+        skinPaint.setColor(skinColor);
+
+        drawFace(canvas);
+        drawEyes(canvas);
+        drawHair(canvas);
     }
 
 
@@ -139,7 +152,7 @@ public class Face extends SurfaceView {
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
+        width = MeasureSpec.getSize(widthMeasureSpec) / 2;
     }
 
 
@@ -160,6 +173,7 @@ public class Face extends SurfaceView {
     public int getHairStyle() {
         return hairStyle;
     }
+
 
 
 
