@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Gonon_FaceMaker</string>
+    <string-array name="hairStyle_array">
+        <item>Bald</item>
+        <item>Straight hair</item>
+        <item>Buzz cut</item>
+    </string-array>
 </resources>

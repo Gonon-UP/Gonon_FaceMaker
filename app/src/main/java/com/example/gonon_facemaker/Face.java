@@ -9,8 +9,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import android.widget.RadioButton;
+import android.widget.SeekBar;
 
 /*
  *
@@ -59,10 +62,12 @@ public class Face extends SurfaceView {
     public Face(Context context, AttributeSet attrs)    {
 
         super(context, attrs);
+
         randomize();
 
         this.setWillNotDraw(false);
     }
+
 
     // randomize method will randomize all four int properties for face
     public void randomize() {
@@ -79,6 +84,8 @@ public class Face extends SurfaceView {
                 random.nextInt(255), random.nextInt(255));
 
         this.hairStyle = random.nextInt(3); // Total of 4 hairstyle options
+
+
     }
 
 
@@ -112,7 +119,7 @@ public class Face extends SurfaceView {
         int i;
         // Draw nothing, bald
         if (hairStyle == BALD)    {
-           //
+           // do nothing
         }
         // Straight hair
         else if (hairStyle == STRAIGHT) {
@@ -140,10 +147,12 @@ public class Face extends SurfaceView {
         eyePaint.setColor(eyeColor);
         skinPaint.setColor(skinColor);
 
+
         drawFace(canvas);
         drawEyes(canvas);
         drawHair(canvas);
     }
+
 
 
 
@@ -171,7 +180,7 @@ public class Face extends SurfaceView {
     }
 
     public int getHairStyle() {
-        return hairStyle;
+        return this.hairStyle;
     }
 
 
@@ -192,5 +201,8 @@ public class Face extends SurfaceView {
 
     public void setHairColor(int hairColor) {
         this.hairColor = hairColor;
+    }
+
+    public void updateProgressBar(int colors) {
     }
 }
